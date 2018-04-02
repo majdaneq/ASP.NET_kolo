@@ -16,11 +16,12 @@ namespace Demo2.Controllers
         public ActionResult Index(int id)
         {            
             if (id <= 0)
-                id = 1;           
+                id = 1;
             var model = new CategoriesWithBooks
             {
                 Books = _booksRepository.GetCategoryById(id).Books,
-                Categories = _booksRepository.GetCategories()
+                Categories = _booksRepository.GetCategories(),
+                CurrentCategory = id
             };
 
             return View(model);

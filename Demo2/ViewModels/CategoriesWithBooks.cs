@@ -10,5 +10,6 @@ namespace Demo2.ViewModels
     {
         public List<CategoryModel> Categories { get; set; }
         public List<BookModel> Books { get; set; }
+        public int CurrentCategory { get; set; }
     }
 }
