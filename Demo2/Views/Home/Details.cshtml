@@ -5,7 +5,15 @@
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
-Tu trzeba ładnie wyświetlić model
+   @section Details
+   {
+        <b>Autor:</b> @Model.Author <br />
+        <b>Tytuł:</b> @Model.Title <br />
+        <b>Kategoria:</b> @Model.CategoryName<br />    
+        <b>E-mail kontaktowy:</b> @Model.ContactEmail<br />    
+        <b>Isbn:</b> @Model.Isbn<br />   
+    }
+
 
 
 <script>

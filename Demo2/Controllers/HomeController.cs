@@ -10,13 +10,13 @@ namespace Demo2.Controllers
 {
     public class HomeController : Controller
     {
+        
         private BooksRepository _booksRepository = new BooksRepository();
         // GET: Home
         public ActionResult Index(int id)
-        {
+        {            
             if (id <= 0)
-                id = 1;
-
+                id = 1;           
             var model = new CategoriesWithBooks
             {
                 Books = _booksRepository.GetCategoryById(id).Books,
@@ -28,12 +28,14 @@ namespace Demo2.Controllers
 
         public ActionResult Details(int id)
         {
-            var bookModel = _booksRepository.GetBookById(3);
+            var bookModel = _booksRepository.GetBookById(id);
             var bookViewModel = new BookViewModel
             {
                 Author = bookModel.Author,
                 CategoryName = bookModel.CategoryModel.Name,
-                Title = bookModel.Title
+                Title = bookModel.Title,
+                Isbn = bookModel.Isbn,
+                ContactEmail=bookModel.ContactEmail
             };
 
             return View(bookViewModel);
