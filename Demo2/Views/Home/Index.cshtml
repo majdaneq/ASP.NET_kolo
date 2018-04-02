@@ -1,0 +1,28 @@
+﻿@model Demo2.ViewModels.CategoriesWithBooks
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<ol>
+    @foreach (var book in Model.Books)
+    {
+        <li>
+            @Html.ActionLink(book.Title, "Details", "Home", new { book.Id}, null) napisanej przez: @book.Author
+        </li>
+    }
+</ol>
+
+@section Categories
+{
+    <ol>
+        @foreach (var category in Model.Categories)
+        {
+            <li>
+                @Html.ActionLink(category.Name, "Index", "Home", new { category.Id}, null)
+            </li>
+        }
+    </ol>
+}
+

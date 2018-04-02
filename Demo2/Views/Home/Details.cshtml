@@ -1,0 +1,13 @@
+﻿@model Demo2.ViewModels.BookViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+Tu trzeba ładnie wyświetlić model
+
+
+<script>
+    var modelJS = @Html.Raw(Json.Encode(Model))
+</script>

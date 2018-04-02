@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+<header>
+    <ul style="list-style-type: none">
+        <li style="display: inline">@Html.ActionLink("ALLEGRO", "Index", "Home")</li>
+        <li style="display: inline">@Html.ActionLink("Kategorie", "Index", "Home")</li>
+        <li style="display: inline">@Html.ActionLink("Dodaj", "AddBook", "Manage")</li>
+    </ul>
+</header>
+<div style="overflow: hidden">
+    <div style="float: left; padding-right: 100px">
+        @RenderSection("Categories", false)
+    </div>
+    <div style="float: left">
+        @RenderBody()
+    </div>
+</div>
+<footer>STOPKA ORYGINALNEGO ALLEGRO</footer>
+</body>
+</html>
