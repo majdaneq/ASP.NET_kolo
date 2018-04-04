@@ -12,6 +12,7 @@ namespace Demo2.Controllers
     {
         
         private BooksRepository _booksRepository = new BooksRepository();
+        private CarRepository _carRepository = new CarRepository();
         // GET: Home
         public ActionResult Index(int id)
         {            
@@ -25,7 +26,7 @@ namespace Demo2.Controllers
             };
 
             return View(model);
-        }
+        }        
 
         public ActionResult Details(int id)
         {
@@ -40,6 +41,34 @@ namespace Demo2.Controllers
             };
 
             return View(bookViewModel);
+        }
+
+        public ActionResult Cars(int id)
+        {
+            if (id <= 0)
+                id = 1;
+            var model = new CarCategoryWithModels
+            {
+                CarBrand = _carRepository.GetCategories(),
+                CarModel = _carRepository.GetCategoryById(id).Cars,
+                CurrentCategory = id
+            };
+
+            return View(model);
+        }
+
+        public ActionResult CarDetails(int id)
+        {
+            var carModel = _carRepository.GetCarById(id);
+            var carViewModel = new CarViewModel
+            {
+                Brand= carModel.Brand,
+                Name = carModel.Name,
+                Engine=carModel.Engine,
+                ReleaseDate=carModel.ReleaseDate,
+            };
+
+            return View(carViewModel);
         }
     }
 }

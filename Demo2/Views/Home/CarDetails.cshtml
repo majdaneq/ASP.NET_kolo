@@ -1,0 +1,21 @@
+﻿@model Demo2.ViewModels.CarViewModel
+
+@{
+    ViewBag.Title = "CarDetails";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+@section Details
+   {
+    <b>Marka:</b> @Model.Brand <br />
+    <b>Model:</b> @Model.Name <br />
+    <b>Rok Produkcji:</b> @Model.ReleaseDate<br />
+    <b>Pojemność silnika:</b> @Model.Engine<br />
+   
+}
+
+
+
+<script>
+    var modelJS = @Html.Raw(Json.Encode(Model))
+</script>
