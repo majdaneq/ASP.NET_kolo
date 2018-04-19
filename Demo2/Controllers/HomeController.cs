@@ -10,65 +10,46 @@ namespace Demo2.Controllers
 {
     public class HomeController : Controller
     {
-        
         private BooksRepository _booksRepository = new BooksRepository();
-        private CarRepository _carRepository = new CarRepository();
         // GET: Home
         public ActionResult Index(int id)
-        {            
+        {
             if (id <= 0)
                 id = 1;
-            var model = new CategoriesWithBooks
+
+            var model = new CategoriesWithBooksViewModel
             {
                 Books = _booksRepository.GetCategoryById(id).Books,
-                Categories = _booksRepository.GetCategories(),
-                CurrentCategory = id
+                Categories = _booksRepository.GetCategories()
             };
 
             return View(model);
-        }        
+        }
 
         public ActionResult Details(int id)
         {
+            if (id <= 0)
+                id = 1;
+
             var bookModel = _booksRepository.GetBookById(id);
             var bookViewModel = new BookViewModel
             {
+                Isbn = bookModel.Isbn, //
                 Author = bookModel.Author,
                 CategoryName = bookModel.CategoryModel.Name,
                 Title = bookModel.Title,
-                Isbn = bookModel.Isbn,
-                ContactEmail=bookModel.ContactEmail
+                ContactEmail = bookModel.ContactEmail,//
+                Price = bookModel.Price, //
+                Description = bookModel.Description
             };
 
             return View(bookViewModel);
         }
-
-        public ActionResult Cars(int id)
+        [ChildActionOnly]
+        public ActionResult GetDate()
         {
-            if (id <= 0)
-                id = 1;
-            var model = new CarCategoryWithModels
-            {
-                CarBrand = _carRepository.GetCategories(),
-                CarModel = _carRepository.GetCategoryById(id).Cars,
-                CurrentCategory = id
-            };
-
-            return View(model);
+            return PartialView("_GetDate", DateTime.Now);
         }
 
-        public ActionResult CarDetails(int id)
-        {
-            var carModel = _carRepository.GetCarById(id);
-            var carViewModel = new CarViewModel
-            {
-                Brand= carModel.Brand,
-                Name = carModel.Name,
-                Engine=carModel.Engine,
-                ReleaseDate=carModel.ReleaseDate,
-            };
-
-            return View(carViewModel);
-        }
     }
 }

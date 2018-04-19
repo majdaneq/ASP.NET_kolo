@@ -9,8 +9,7 @@
 <header>
     <ul style="list-style-type: none">
         <li style="display: inline">@Html.ActionLink("ALLEGRO", "Index", "Home")</li>
-        <li style="display: inline">@Html.ActionLink("Ksiazki", "Index", "Home")</li>
-        <li style="display: inline">@Html.ActionLink("Samochody", "Cars", "Home")</li>
+        <li style="display: inline">@Html.ActionLink("Kategorie", "Index", "Home")</li>
         <li style="display: inline">@Html.ActionLink("Dodaj", "AddBook", "Manage")</li>
     </ul>
 </header>
@@ -22,15 +21,6 @@
         @RenderBody()
     </div>
 </div>
-
-
-    <div style="overflow:hidden">
-        <div style="text-align:center">
-            @RenderSection("Details",false)
-        </div>  
-    </div>
-
-
 <footer>STOPKA ORYGINALNEGO ALLEGRO</footer>
 </body>
 </html>

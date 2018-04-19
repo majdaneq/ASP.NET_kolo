@@ -12,6 +12,8 @@ namespace Demo2.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public string ContactEmail { get; set; }
+        public decimal Price { get; set; }//
+        public string Description { get; set; } //
         public CategoryModel CategoryModel { get; set; }
     }
 }

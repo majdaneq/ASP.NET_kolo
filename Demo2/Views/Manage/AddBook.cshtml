@@ -1,0 +1,14 @@
+﻿@model Demo2.ViewModels.BookViewModel
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>AddBook</h2>
+@ViewData["Message"]
+<br />
+@using (Html.BeginForm())
+    {
+        @Html.EditorFor(m=>m)
+        <input type="submit" value="detonuj"/>
+}

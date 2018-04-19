@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Demo2.Models.CategoryModel>
+
+    <ol>
+        @foreach (var category in Model)
+        {
+            <li>
+                @Html.ActionLink(category.Name, "Index", "Home", new { category.Id }, null)
+            </li>
+        }
+    </ol>
